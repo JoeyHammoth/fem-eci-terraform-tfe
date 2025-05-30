@@ -14,7 +14,7 @@ locals {
     workspace = {
         "fem-eci-tfe" = {
             description = "Example description of a workspace"
-            execution_mode = "local"
+            execution_mode = "remote"
             
             # Turns from module.project.id to module.project["fem-eci-workspace"].id
             # since due to making a multiple projects and workspaces
@@ -22,6 +22,7 @@ locals {
             # has to have a unique key. We need to specify what
             # project we are getting the id from. 
             project_id = module.project["fem-eci-project"].id
+            vcs_repo_identifier = "JoeyHammoth/fem-eci-terraform-tfe"
         }
     }
 }

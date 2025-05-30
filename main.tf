@@ -26,6 +26,17 @@ module "workspace" {
   name = each.key
   organization_name = var.organization_name
   project_id = each.value.project_id
+
+  # workspace is being defined by repo. Set a 1-1 rel where a 
+  # workspace must have a repo
+
+  vcs_repo = {
+    github_app_installation_id = data.tfe_github_app_installation.this.id
+    
+    # Each workspace is connected to different repo, so use 
+    # identifier to connect to different repos for each workspace
+    identifier = each.value.vcs_repo_identifier
+  }
 }
 
 # Create moved since tf create module.workspace not 
