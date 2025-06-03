@@ -27,7 +27,7 @@ locals {
 
         "fem-eci-github" = {
             description = "Example description for Github resources"
-            execution_mode = "local" # Set to local first and when you apply, set it to remote
+            execution_mode = "remote" # Set to local first and when you apply, set it to remote
             project_id = module.project["fem-eci-project"].id
             vcs_repo_identifier = "${var.github_organization_name}/fem-eci-terraform-github"
         }
